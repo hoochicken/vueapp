@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+
+  vueapp:
+    container_name: vueapp
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/app'
+      - '/app/node_modules'
+    ports:
+      - '3000:8000'
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.vueapp69.rule=Host(`vueapp69.localhost`)"
+      - "traefik.http.routers.vueapp69.entrypoints=web"
+    networks:
+      - net69
+
+networks:
+  net69:
+    name: api_net69
+    external: true
