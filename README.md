@@ -1,51 +1,42 @@
 # app
 
+## Settings
 
-[check here](https://dev.to/jiprochazka/starting-up-a-new-vue-3-project-with-vite-and-docker-3355)
+~~~
+# adjust api in .env file.
+# well, that SHOULD work, but doesn't
+API_HOST=http://symapi.localhost
 
-This template should help get you started developing with Vue 3 in Vite.
+# main.js => directly here
+let url = `http://symapi.localhost/`;
+~~~
 
-## Recommended IDE Setup
+## Start etc.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
+~~~
+# start up 
 npm install
-```
 
-### Compile and Hot-Reload for Development
-
-```sh
+# Compile and Hot-Reload for Development
 npm run dev
-```
 
-### Compile and Minify for Production
+# Compile and Hot-Reload for Development
+npm run serve
+~~~
 
-```sh
+# Deployment
+
+~~~
+# Compile and Minify for Production
 npm run build
-```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
+# Run Unit Tests with [Vitest](https://vitest.dev/)
 npm run test:unit
-```
 
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
-
-```sh
+# Run End-to-End Tests with [Cypress](https://www.cypress.io/)
 npm run build
 npm run test:e2e # or `npm run test:e2e:ci` for headless testing
-```
 
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
+# Lint with [ESLint](https://eslint.org/)
 npm run lint
-```
+~~~

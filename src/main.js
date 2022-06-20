@@ -13,7 +13,9 @@ const app = createApp(App)
 // todo: das hier muesste aus via dotenv aus den .env geholt werden
 // let url = `http://${process.env.API_HOST}`;
 
-let url = `http://php69.localhost/`;
+// let url = `http://php69.localhost/`;
+let url = `http://symapi.localhost/`;
+// let url = `http://${process.env.API_HOST}`;
 axios.defaults.baseURL = url;
 
 app.axios = axios;

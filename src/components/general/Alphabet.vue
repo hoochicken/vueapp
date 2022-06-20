@@ -25,6 +25,8 @@ export default {
   }),
   mounted: function() {
     this.initiateLetter();
+    this.addAllLetters();
+    this.setLetters();
   },
   methods: {
     async initiateLetter() {
@@ -55,9 +57,11 @@ export default {
     },
     addAllLetters() {
       this.lettersActive = this.lettersAll
+      this.setLetters()
     },
     removeAllLetters() {
       this.lettersActive = []
+      this.setLetters()
     },
     setLetters() {
       this.$emit('setLetters', this.lettersActive)

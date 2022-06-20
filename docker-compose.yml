@@ -17,9 +17,28 @@ services:
       - "traefik.http.routers.vueapp69.rule=Host(`vueapp69.localhost`)"
       - "traefik.http.routers.vueapp69.entrypoints=web"
     networks:
-      - net69
+      - net5
+
+  my_frontend:
+    container_name: my_frontend
+    image: node:lts
+    working_dir: /var/www/html/app/
+    entrypoint: /bin/bash
+    ports:
+      - "8089:8090"
+    volumes:
+      - ./:/var/www/html/app
+    tty: true
+    command:
+      -  "npm run serve"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.tt.rule=Host(`tt.localhost`)"
+      - "traefik.http.routers.tt.entrypoints=web"
+    networks:
+      - net5
 
 networks:
-  net69:
-    name: api_net69
+  net5:
+    name: symapi_net5
     external: true
