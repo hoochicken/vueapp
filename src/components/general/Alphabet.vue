@@ -2,7 +2,7 @@
   <div>
     <h2>Alphabet</h2>
     <!--div class="alert alert-black">{{ lettersAll }}</div-->
-    <div class="btn btn-secondary" v-on:click="setLetters()">SET ETTERS</div>
+    <div class="btn btn-secondary" v-on:click="setLetters()">SET LETTERS</div>
     <div class="btn btn-secondary" v-on:click="addAllLetters()">Alle anwählen</div>
     <div class="btn btn-secondary" v-on:click="removeAllLetters()">Alle deaktivieren</div>
     <div class="">
@@ -23,18 +23,18 @@ export default {
     lettersActive: [],
     isLoading: false
   }),
-  mounted: function() {
+  mounted: await function() {
     this.initiateLetter();
-    this.addAllLetters();
-    this.setLetters();
   },
   methods: {
     async initiateLetter() {
       this.isLoading = true
-      await this.axios
+      this.axios
           .get('/letters')
           .then(response => {
             this.lettersAll = response.data.letters
+            this.addAllLetters();
+            this.setLetters();
             this.isLoading = false
           })
           .catch(error => {
