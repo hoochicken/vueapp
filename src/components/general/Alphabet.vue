@@ -61,7 +61,6 @@ export default {
     },
     removeAllLetters() {
       this.lettersActive = []
-      this.setLetters()
     },
     setLetters() {
       this.$emit('setLetters', this.lettersActive)
