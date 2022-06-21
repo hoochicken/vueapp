@@ -1,5 +1,7 @@
 name: Run Unit Tests and Lint Files
+
 on: push
+
 jobs:
   unit_test-lint:
     runs-on: ubuntu-latest
