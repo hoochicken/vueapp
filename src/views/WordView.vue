@@ -18,7 +18,7 @@
       <div v-if="!pleaseGuess && !right && result" class="p-2 mt-4 bg-danger text-white">Nich ganz ...</div>
     </div>
     <div v-if="isLoading" class="loading alert alert-warning">
-      Ich lade gerade deine Ratewörter, bitte warten ... <loading-spinner></loading-spinner>
+      Ich lade gerade deine Ratewörter, bitte warten ... <!--loading-spinner></loading-spinner-->
     </div>
 
     <div v-if="showDebug" class="debug-container mt-4">

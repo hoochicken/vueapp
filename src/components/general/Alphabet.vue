@@ -23,7 +23,7 @@ export default {
     lettersActive: [],
     isLoading: false
   }),
-  mounted: await function() {
+  mounted: function() {
     this.initiateLetter();
   },
   methods: {

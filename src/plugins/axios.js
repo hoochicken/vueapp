@@ -1,6 +1,9 @@
 "use strict";
 
-import Vue from 'vue';
+// import Vue from 'vue';
+import { createApp } from 'vue'
+const Vue = createApp({})
+
 import axios from "axios";
 
 // Full config:  https://github.com/axios/axios#request-config

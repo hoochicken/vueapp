@@ -40,8 +40,8 @@ app.component('vue3-chart-js', Vue3ChartJs)
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 app.component('font-awesome-icon', FontAwesomeIcon)
 
-import CircleSpin from 'vue-loading-spinner/src/components/Circle.vue'
-app.component('loading-spinner', CircleSpin)
+// import CircleSpin from 'vue-loading-spinner/src/components/Circle.vue'
+// app.component('loading-spinner', CircleSpin)
 
 app.config.productionTip = false
 
