@@ -16,20 +16,34 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
 
-  # this is linting
-  unit_test-lint:
-    # The type of runner that the job will run on
+super-lint:
+    name: Lint code base
     runs-on: ubuntu-latest
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Super-Linter
+        uses: github/super-linter@v3.17.0
+        env:
+          DEFAULT_BRANCH: main
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
+  # this is linting
+  #unit_test-lint:
+    # The type of runner that the job will run on
+    #runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    #steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      #- uses: actions/checkout@v2
       # Runs a single command using the runners shell
-      - run: |
-          npm ci
-          npm run build
-          npm run test:unit
-          npm run lint
+      #- run: |
+      #    npm ci
+      #    npm run build
+      #    npm run test:unit
+      #    npm run lint
 
 
   # This workflow contains a single job called "build"
