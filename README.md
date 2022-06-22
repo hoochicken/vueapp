@@ -47,12 +47,14 @@ npm run lint
 # generates a webpage into the ONE dist folder
 npm run build 
 
-# 
+# force git to push dis folder (which is usually ignored) 
 git add dist -f
 git commit "adding dist"
+
+# push to subtree gh-pages 
+# which deploys it automatically to url defined in vite.config.js base
 git subtree push --prefix dist origin gh-pages
 ~~~
 
-vite.config.js
-https://hoochicken.github.io/vueapp/
+[Vue App](https://hoochicken.github.io/vueapp/)
 
