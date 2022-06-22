@@ -28,7 +28,7 @@ jobs:
         env:
           DEFAULT_BRANCH: main
           FILTER_REGEX_INCLUDE: .*src/.*
-          FILTER_REGEX_EXCLUDE: .*/base.css
+          FILTER_REGEX_EXCLUDE: (.*/base.css|.*.png)
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
