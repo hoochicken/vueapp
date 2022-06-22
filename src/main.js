@@ -9,7 +9,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUserSecret, faCake, faList, faChessPawn, faClose } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import Vue3ChartJs from '@j-t-mcc/vue3-chartjs'
-import CircleSpin from 'vue-loading-spinner/src/components/Circle.vue'
+// import CircleSpin from 'vue-loading-spinner/src/components/Circle.vue'
 // import 'mdb-vue-ui-kit/css/mdb.dark.min.css'
 
 const app = createApp(App)
@@ -28,7 +28,7 @@ library.add(faUserSecret, faCake, faList, faChessPawn, faClose)
 
 app.component('vue3-chart-js', Vue3ChartJs)
 app.component('font-awesome-icon', FontAwesomeIcon)
-app.component('loading-spinner', CircleSpin)
+// app.component('loading-spinner', CircleSpin)
 
 app.config.productionTip = false
 
