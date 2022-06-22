@@ -1,13 +1,13 @@
 // import axios from './plugins/axios'
-import { createApp } from 'vue'
+import {createApp} from 'vue'
 import App from './App.vue'
 import router from './router'
 import 'mdb-vue-ui-kit/css/mdb.min.css'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUserSecret, faCake, faList, faChessPawn, faClose } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import {library} from '@fortawesome/fontawesome-svg-core'
+import {faUserSecret, faCake, faList, faChessPawn, faClose} from '@fortawesome/free-solid-svg-icons'
+import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 import Vue3ChartJs from '@j-t-mcc/vue3-chartjs'
 import CircleSpin from 'vue-loading-spinner/src/components/Circle.vue'
 // import 'mdb-vue-ui-kit/css/mdb.dark.min.css'
@@ -33,14 +33,14 @@ app.component('loading-spinner', CircleSpin)
 app.config.productionTip = false
 
 app.exports = {
-    chainWebpack: config => {
-        config.module
-            .rule('raw')
-            .test(/\.txt$/)
-            .use('raw-loader')
-            .loader('raw-loader')
-            .end()
-    }
+  chainWebpack: config => {
+    config.module
+      .rule('raw')
+      .test(/\.txt$/)
+      .use('raw-loader')
+      .loader('raw-loader')
+      .end()
+  }
 }
 
 app.mount('#app')
