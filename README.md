@@ -40,3 +40,19 @@ npm run test:e2e # or `npm run test:e2e:ci` for headless testing
 # Lint with [ESLint](https://eslint.org/)
 npm run lint
 ~~~
+
+# Deployment Github
+
+~~~shell
+# generates a webpage into the ONE dist folder
+npm run build 
+
+# 
+git add dist -f
+git commit "adding dist"
+git subtree push --prefix dist origin gh-pages
+~~~
+
+vite.config.js
+https://hoochicken.github.io/vueapp/
+
