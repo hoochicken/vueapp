@@ -7,7 +7,8 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/vueapp/',
+  base: '/',
+  //base: '/vueapp/',
   server: {    // <-- this object is added
     port: 8090
   },

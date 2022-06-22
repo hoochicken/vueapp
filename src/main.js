@@ -1,9 +1,9 @@
-// import axios from './plugins/axios';
-import { createApp } from 'vue';
-import App from './App.vue';
-import router from "./router";
-import 'mdb-vue-ui-kit/css/mdb.min.css';
-// import 'mdb-vue-ui-kit/css/mdb.dark.min.css';
+// import axios from './plugins/axios'
+import { createApp } from 'vue'
+import App from './App.vue'
+import router from "./router"
+import 'mdb-vue-ui-kit/css/mdb.min.css'
+// import 'mdb-vue-ui-kit/css/mdb.dark.min.css'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
@@ -11,14 +11,14 @@ const app = createApp(App)
 // import Qlletter from '@/components/general/Qlletter.vue' // <= THIS WORKED
 
 // todo: das hier muesste aus via dotenv aus den .env geholt werden
-// let url = `http://${process.env.API_HOST}`;
+// let url = `http://${process.env.API_HOST}`
 
-// let url = `http://php69.localhost/`;
-let url = `http://symapi.localhost/`;
-// let url = `http://${process.env.API_HOST}`;
-axios.defaults.baseURL = url;
+// let url = `http://php69.localhost/`
+let url = `http://symapi.localhost/`
+// let url = `http://${process.env.API_HOST}`
+axios.defaults.baseURL = url
 
-app.axios = axios;
+app.axios = axios
 app.use(VueAxios, axios)
 app.use(router)
 
