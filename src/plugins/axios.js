@@ -1,7 +1,7 @@
-"use strict"
+'use strict'
 
 // import Vue from 'vue'
-import {createApp} from 'vue'
+import { createApp } from 'vue'
 import axios from 'axios'
 
 const Vue = createApp({})
