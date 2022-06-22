@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView'
-import DemonicItem from "../components/demo/DemonicItem";
-// import DemonicItem from "../components/demo/DemonicItem";
+import DemonicItem from '../components/demo/DemonicItem'
+// import DemonicItem from '../components/demo/DemonicItem'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [

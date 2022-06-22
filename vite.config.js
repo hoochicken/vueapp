@@ -8,11 +8,14 @@ import vue from '@vitejs/plugin-vue'
 // https://vitejs.dev/config/
 export default defineConfig({
   base: '/',
-  //base: '/vueapp/',
-  server: {    // <-- this object is added
+  // base: '/vueapp/',
+  server: {
     port: 8090
   },
-  plugins: [vue() /*, Components({dts: true,})*/ ,],
+  plugins: [
+      vue(),
+      /*, Components({dts: true,})*/
+  ],
   resolve: {
     extensions: ['*', '.js', '.vue', '.json'],
     alias: {

@@ -2,7 +2,7 @@
 
 ## Settings
 
-~~~
+~~~shell
 # adjust api in .env file.
 # well, that SHOULD work, but doesn't
 API_HOST=http://symapi.localhost
@@ -13,7 +13,7 @@ let url = `http://symapi.localhost/`;
 
 ## Start etc.
 
-~~~
+~~~shell
 # start up 
 npm install
 
@@ -26,7 +26,7 @@ npm run serve
 
 # Deployment
 
-~~~
+~~~shell
 # Compile and Minify for Production
 npm run build
 

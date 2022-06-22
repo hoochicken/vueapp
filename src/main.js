@@ -1,7 +1,7 @@
 // import axios from './plugins/axios'
 import { createApp } from 'vue'
 import App from './App.vue'
-import router from "./router"
+import router from './router'
 import 'mdb-vue-ui-kit/css/mdb.min.css'
 // import 'mdb-vue-ui-kit/css/mdb.dark.min.css'
 import axios from 'axios'
@@ -13,10 +13,9 @@ const app = createApp(App)
 // todo: das hier muesste aus via dotenv aus den .env geholt werden
 // let url = `http://${process.env.API_HOST}`
 
-// let url = `http://php69.localhost/`
-let url = `http://symapi.localhost/`
-// let url = `http://${process.env.API_HOST}`
-axios.defaults.baseURL = url
+// axios.defaults.baseURL = `http://php69.localhost/`
+// axios.defaults.baseURL = `http://${process.env.API_HOST}`
+axios.defaults.baseURL = `http://symapi.localhost/`
 
 app.axios = axios
 app.use(VueAxios, axios)
@@ -31,7 +30,7 @@ import { faUserSecret, faCake, faList, faChessPawn, faClose } from '@fortawesome
 library.add(faUserSecret, faCake, faList, faChessPawn, faClose)
 
 
-import Vue3ChartJs from "@j-t-mcc/vue3-chartjs"
+import Vue3ChartJs from '@j-t-mcc/vue3-chartjs'
 app.component('vue3-chart-js', Vue3ChartJs)
 
 /* FONT AWESOME II */
@@ -40,8 +39,8 @@ app.component('vue3-chart-js', Vue3ChartJs)
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 app.component('font-awesome-icon', FontAwesomeIcon)
 
-// import CircleSpin from 'vue-loading-spinner/src/components/Circle.vue'
-// app.component('loading-spinner', CircleSpin)
+import CircleSpin from 'vue-loading-spinner/src/components/Circle.vue'
+app.component('loading-spinner', CircleSpin)
 
 app.config.productionTip = false
 
