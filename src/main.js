@@ -1,13 +1,13 @@
 // import axios from './plugins/axios'
-import {createApp} from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import 'mdb-vue-ui-kit/css/mdb.min.css'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-import {library} from '@fortawesome/fontawesome-svg-core'
-import {faUserSecret, faCake, faList, faChessPawn, faClose} from '@fortawesome/free-solid-svg-icons'
-import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faUserSecret, faCake, faList, faChessPawn, faClose } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import Vue3ChartJs from '@j-t-mcc/vue3-chartjs'
 import CircleSpin from 'vue-loading-spinner/src/components/Circle.vue'
 // import 'mdb-vue-ui-kit/css/mdb.dark.min.css'
@@ -18,7 +18,7 @@ const app = createApp(App)
 // todo: das hier muesste aus via dotenv aus den .env geholt werden
 // axios.defaults.baseURL = `http://php69.localhost/`
 // axios.defaults.baseURL = `http://${process.env.API_HOST}`
-axios.defaults.baseURL = `http://symapi.localhost/`
+axios.defaults.baseURL = 'http://symapi.localhost/'
 
 app.axios = axios
 app.use(VueAxios, axios)

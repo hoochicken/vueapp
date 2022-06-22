@@ -48,15 +48,15 @@ Plugin.install = function (Vue, options) {
   window.axios = _axios
   Object.defineProperties(Vue.prototype, {
     axios: {
-      get() {
+      get () {
         return _axios
       }
     },
     $axios: {
-      get() {
+      get () {
         return _axios
       }
-    },
+    }
   })
 }
 
