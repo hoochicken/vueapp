@@ -15,10 +15,11 @@ import Vue3ChartJs from '@j-t-mcc/vue3-chartjs'
 const app = createApp(App)
 // import Qlletter from '@/components/general/Qlletter.vue' // <= THIS WORKED
 
-// todo: das hier muesste aus via dotenv aus den .env geholt werden
-// axios.defaults.baseURL = `http://php69.localhost/`
-// axios.defaults.baseURL = `http://${process.env.API_HOST}`
-axios.defaults.baseURL = 'http://symapi.localhost/'
+// vue app
+// axios.defaults.baseURL = `http://${process.env.VUE_APP_HOST}`
+
+// but we're using vite here ;-)
+axios.defaults.baseURL = `http://${import.meta.env.VITE_API_HOST}`
 
 app.axios = axios
 app.use(VueAxios, axios)
