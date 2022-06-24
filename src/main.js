@@ -16,7 +16,7 @@ const app = createApp(App)
 // import Qlletter from '@/components/general/Qlletter.vue' // <= THIS WORKED
 
 // vue app
-// axios.defaults.baseURL = `http://${process.env.VUE_APP_HOST}`
+// axios.defaults.baseURL = `${process.env.VUE_APP_HOST}`
 
 // but we're using vite here ;-)
 axios.defaults.baseURL = `${import.meta.env.VITE_API_HOST}`
