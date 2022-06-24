@@ -56,5 +56,6 @@ git commit "adding dist"
 git subtree push --prefix dist origin gh-pages
 ~~~
 
-[Vue App](https://hoochicken.github.io/vueapp/)
+* [Vue App](https://hoochicken.github.io/vueapp/)
+* [Github Settings](https://github.com/hoochicken/vueapp/settings/pages)
 
