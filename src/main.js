@@ -19,7 +19,7 @@ const app = createApp(App)
 // axios.defaults.baseURL = `http://${process.env.VUE_APP_HOST}`
 
 // but we're using vite here ;-)
-axios.defaults.baseURL = `http://${import.meta.env.VITE_API_HOST}`
+axios.defaults.baseURL = `${import.meta.env.VITE_API_HOST}`
 
 app.axios = axios
 app.use(VueAxios, axios)
