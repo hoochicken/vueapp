@@ -3,12 +3,9 @@
 ## Settings
 
 ~~~shell
-# adjust api in .env file.
-# well, that SHOULD work, but doesn't
-API_HOST=http://symapi.localhost
-
-# main.js => directly here
-let url = `http://symapi.localhost/`;
+# go to app
+# adjust api path in .env file.
+VITE_API_HOST=http://symapi.localhost
 ~~~
 
 ## Start etc.
@@ -23,6 +20,27 @@ npm run dev
 # Compile and Hot-Reload for Development
 npm run serve
 ~~~
+
+## Fixtures load
+
+~~~shell
+# delete database, and load fixtures afterwards 
+bin/console doctrine:fixtures:load
+
+# add fixtures afterwards 
+bin/console doctrine:fixtures:load --append
+~~~
+
+~~~sql
+# SQL for checking on duplicates
+SELECT * FROM
+(
+	SELECT COUNT(word.title) AS counter, word.title FROM public.word
+	GROUP BY word.title
+) as x
+WHERE counter > 1
+~~~
+
 
 # Deployment
 
