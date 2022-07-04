@@ -35,6 +35,11 @@
     </div>
   </div>
   <div class="d-md-flex">
+    <div class="p-2 flex-fill">
+      <word-length :length="wordLength" @setWordLength="setWordLength"></word-length>
+    </div>
+  </div>
+  <div class="d-md-flex">
     <div class="statistics p-2 flex-fill">
       <h2>Deine aktuelle Statistik</h2>
       <statistics ref="statistics"></statistics>
@@ -48,17 +53,17 @@
 
 <script>
 
-import { MDBInput, MDBBtn } from "mdb-vue-ui-kit"
-import Qlletter from '../components/general/Qlletter'
+import { MDBBtn } from "mdb-vue-ui-kit"
 import Statistics from "../components/layout/Statistics"
 import Wordlist from "../components/layout/Wordlist"
 import Qlword from "../components/general/Qlword"
 import Alphabet from "../components/general/Alphabet";
+import WordLength from "../components/general/WordLength";
 
 
 export default {
   name: 'Word',
-  components: {Alphabet, Wordlist, Statistics, MDBInput, MDBBtn, Qlletter, Qlword },
+  components: {WordLength, Alphabet, Wordlist, Statistics, MDBBtn, Qlword },
   data: () => ({
     word: '',
     guess: '',
@@ -73,6 +78,7 @@ export default {
     right: true,
     letters: {},
     wordlist: ['Hallo'],
+    wordLength: 0,
     showDebug: false,
     errored: false,
     isLoading: true
@@ -174,6 +180,9 @@ export default {
     },
     addWrong() {
       this.$refs.statistics.addWrong();
+    },
+    setWordLength(wordLength) {
+      this.wordLength = wordLength;
     }
   }
 }
