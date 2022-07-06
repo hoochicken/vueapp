@@ -9,7 +9,6 @@
       <MDBBtn class="btn btn-primary" @click="checkGuess()">Antwort prüfen</MDBBtn>
       <MDBBtn v-if="!isLoading" class="btn btn-secondary" @click="tryAgain()">Nächstes Wort bitte!</MDBBtn>
       <MDBBtn class="btn btn-secondary ms-auto" @click="restart()">Ganz neu anfangen</MDBBtn>
-      <MDBBtn class="btn btn-secondary" @click="setLetters">SET LETTERS</MDBBtn>
     </div>
 
     <div class="please-guess">
@@ -26,10 +25,14 @@
       <div v-if="!showDebug" @click="showDebug = true" class="btn btn-secondary">Show debug</div>
       <div v-if="showDebug" @click="showDebug = false" class="btn btn-secondary">Hide debug</div>
       <div v-if="showDebug" class="p-2 mt-4 bg-light">word: {{ word }} // guess: {{ guess }} // letters: {{ letters }}
-      <br /> wordlist: {{ wordlist }}
-      <br /> {{ debug }}
+        <br /> {{ debug }}
+        <br /> <div style="display:block; height:50px;overflow:hidden;" v-if="showDebug">wordlist: {{ wordlist }}</div>
       </div>
     </div>
+  </div>
+  <div class="">
+    <h2>Parameter</h2>
+    <MDBBtn class="btn btn-secondary" @click="setLetters">Wörter holen</MDBBtn>
   </div>
   <div class="d-md-flex">
     <div class="p-2 flex-fill">
@@ -81,7 +84,7 @@ export default {
     letters: {},
     wordlist: ['Hallo'],
     wordLength: 10,
-    showDebug: false,
+    showDebug: true,
     debug: {},
     errored: false,
     isLoading: true

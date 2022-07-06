@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Alphabet</h2>
+    <h3>Alphabet</h3>
     <!--div class="alert alert-black">{{ lettersAll }}</div-->
     <div class="">
       <letter-simple v-for="letter in lettersAll" v-on:click="toggleLetter(letter)" :letter="letter" :active="lettersActive.includes(letter)"></letter-simple>

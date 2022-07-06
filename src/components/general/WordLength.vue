@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Word Length</h2>
+    <h3>Word Length</h3>
     <div class="d-flex">
       <div v-for="(item, key) in lengthAvailable" v-bind:key="key">
         <span :class="item === length ? 'float-left btn btn-sm btn-secondary' : 'float-left btn btn-sm'" v-on:click="setWordLength(item)">{{ item }}</span>
