@@ -9,7 +9,7 @@
       <MDBBtn class="btn btn-primary" @click="checkGuess()">Antwort prüfen</MDBBtn>
       <MDBBtn v-if="!isLoading" class="btn btn-secondary" @click="tryAgain()">Nächstes Wort bitte!</MDBBtn>
       <MDBBtn class="btn btn-secondary ms-auto" @click="restart()">Ganz neu anfangen</MDBBtn>
-      <MDBBtn class="btn primary" @click="setLetters">SET LETTERS</MDBBtn>
+      <MDBBtn class="btn btn-secondary" @click="setLetters">SET LETTERS</MDBBtn>
     </div>
 
     <div class="please-guess">
@@ -63,7 +63,7 @@ import WordLength from "../components/general/WordLength";
 
 
 export default {
-  name: 'Word',
+  name: 'WordGuess',
   components: {WordLength, Alphabet, Wordlist, Statistics, MDBBtn, Qlword },
   data: () => ({
     word: '',

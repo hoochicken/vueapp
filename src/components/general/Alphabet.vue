@@ -5,8 +5,8 @@
     <div class="">
       <letter-simple v-for="letter in lettersAll" v-on:click="toggleLetter(letter)" :letter="letter" :active="lettersActive.includes(letter)"></letter-simple>
     </div>
-    <div class="btn btn-secondary" v-on:click="addAllLetters()">Alle anwählen</div>
-    <div class="btn btn-secondary" v-on:click="removeAllLetters()">Alle deaktivieren</div>
+    <div class="btn btn-white" v-on:click="addAllLetters()">Alle anwählen</div>
+    <div class="btn btn-white" v-on:click="removeAllLetters()">Alle deaktivieren</div>
   </div>
 </template>
 
