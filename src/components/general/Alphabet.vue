@@ -2,18 +2,17 @@
   <div>
     <h2>Alphabet</h2>
     <!--div class="alert alert-black">{{ lettersAll }}</div-->
-    <div class="btn btn-secondary" v-on:click="setLetters()">SET LETTERS</div>
-    <div class="btn btn-secondary" v-on:click="addAllLetters()">Alle anwählen</div>
-    <div class="btn btn-secondary" v-on:click="removeAllLetters()">Alle deaktivieren</div>
     <div class="">
       <letter-simple v-for="letter in lettersAll" v-on:click="toggleLetter(letter)" :letter="letter" :active="lettersActive.includes(letter)"></letter-simple>
     </div>
-    <!--loading-spinner if="isLoading"></loading-spinner-->
+    <div class="btn btn-secondary" v-on:click="addAllLetters()">Alle anwählen</div>
+    <div class="btn btn-secondary" v-on:click="removeAllLetters()">Alle deaktivieren</div>
   </div>
 </template>
 
 <script>
 import LetterSimple from "./LetterSimple";
+import wordLength from "./WordLength";
 export default {
   name: "Alphabet",
   components: {LetterSimple},
@@ -61,9 +60,6 @@ export default {
     },
     removeAllLetters() {
       this.lettersActive = []
-    },
-    setLetters() {
-      this.$emit('setLetters', this.lettersActive)
     }
   }
 }
