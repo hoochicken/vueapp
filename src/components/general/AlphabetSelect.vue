@@ -14,7 +14,7 @@
 import LetterSimple from "./LetterSimple";
 import wordLength from "./WordLength";
 export default {
-  name: "Alphabet",
+  name: "AlphabetSelect",
   components: {LetterSimple},
   props: ['letters'],
   data: () => ( {

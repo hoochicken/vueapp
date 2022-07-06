@@ -32,7 +32,7 @@
   </div>
   <div class="d-md-flex">
     <div class="p-2 flex-fill">
-      <alphabet ref="alphabetion" @setLetters="setLetters"></alphabet>
+      <alphabet-select ref="alphabetion" @setLetters="setLetters"></alphabet-select>
     </div>
   <!--/div>
   <div class="d-md-flex"-->
@@ -58,13 +58,13 @@ import { MDBBtn } from "mdb-vue-ui-kit"
 import Statistics from "../components/layout/Statistics"
 import Wordlist from "../components/layout/Wordlist"
 import Qlword from "../components/general/Qlword"
-import Alphabet from "../components/general/Alphabet";
+import AlphabetSelect from "../components/general/AlphabetSelect";
 import WordLength from "../components/general/WordLength";
 
 
 export default {
   name: 'WordGuess',
-  components: {WordLength, Alphabet, Wordlist, Statistics, MDBBtn, Qlword },
+  components: {WordLength, AlphabetSelect, Wordlist, Statistics, MDBBtn, Qlword },
   data: () => ({
     word: '',
     guess: '',
