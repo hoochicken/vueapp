@@ -12,7 +12,6 @@
 
 <script>
 import LetterSimple from "./LetterSimple";
-import wordLength from "./WordLength";
 export default {
   name: "AlphabetSelect",
   components: {LetterSimple},

@@ -2,7 +2,7 @@
   <div class="words">
     <h1>Fingeralphabet</h1>
     <div class="">
-      <qlword :word="word" />
+      <ql-word :word="word" />
     </div>
     <input type="text" ref="guess" class="form-control" id="guess" name="guess" @keydown.enter="checkGuess()" v-model="guess" />
     <div class="d-flex">
@@ -57,14 +57,14 @@
 import { MDBBtn } from "mdb-vue-ui-kit"
 import Statistics from "../components/layout/Statistics"
 import Wordlist from "../components/layout/Wordlist"
-import Qlword from "../components/general/Qlword"
+import QlWord from "../components/general/QlWord"
 import AlphabetSelect from "../components/general/AlphabetSelect";
 import WordLength from "../components/general/WordLength";
 
 
 export default {
   name: 'WordGuess',
-  components: {WordLength, AlphabetSelect, Wordlist, Statistics, MDBBtn, Qlword },
+  components: {WordLength, AlphabetSelect, Wordlist, Statistics, MDBBtn, QlWord },
   data: () => ({
     word: '',
     guess: '',

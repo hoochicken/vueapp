@@ -1,14 +1,14 @@
 <template>
   <div class="d-flex justify-content-center">
-    <qlletter v-for="letter in letters" :src="'alphabet/' + letter + '.png'" :title="letter.toUpperCase()"/>
+    <ql-letter v-for="letter in letters" :src="'alphabet/' + letter + '.png'" :title="letter.toUpperCase()"/>
   </div>
 </template>
 
 <script>
-import Qlletter from "./Qlletter";
+import QlLetter from "./QlLetter";
 export default {
-  name: "Qlword",
-  components: {Qlletter},
+  name: "QlWord",
+  components: {QlLetter},
   // props: {'word': {type:String, default:'Hallo'}},
   props: ['word'],
   data: () => {
