@@ -119,7 +119,7 @@ export default {
       this.isLoading = true
       let endpoint = '/words'
       if (0 < letters.length && 0 < wordLength) endpoint += '/' + letters + '/' + wordLength
-      else if (0 < wordLength) endpoint += '/' + wordLength
+      // else if (0 < wordLength) endpoint += '/' + wordLength
       else if (0 < letters.length) endpoint += '/' + letters
       await this.axios
           .get(endpoint)
