@@ -27,6 +27,7 @@
       <div v-if="showDebug" @click="showDebug = false" class="btn btn-secondary">Hide debug</div>
       <div v-if="showDebug" class="p-2 mt-4 bg-light">word: {{ word }} // guess: {{ guess }} // letters: {{ letters }}
       <br /> wordlist: {{ wordlist }}
+      <br /> {{ debug }}
       </div>
     </div>
   </div>
@@ -58,8 +59,8 @@ import { MDBBtn } from "mdb-vue-ui-kit"
 import Statistics from "../components/layout/Statistics"
 import Wordlist from "../components/layout/Wordlist"
 import QlWord from "../components/general/QlWord"
-import AlphabetSelect from "../components/general/AlphabetSelect";
-import WordLength from "../components/general/WordLength";
+import AlphabetSelect from "../components/general/AlphabetSelect"
+import WordLength from "../components/general/WordLength"
 
 
 export default {
@@ -79,56 +80,55 @@ export default {
     right: true,
     letters: {},
     wordlist: ['Hallo'],
-    wordLength: 0,
+    wordLength: 10,
     showDebug: false,
+    debug: {},
     errored: false,
     isLoading: true
   }),
-  mounted: function() {
-    this.switchWord();
-    this.displaySigns();
-    this.initiateWords(this.$refs.alphabetion.lettersAll, this.wordLength);
-    this.alphabet = Array.from(this.alphabetRaw);
+  mounted: async function() {
+    this.switchWord()
+    this.displaySigns()
+    await this.initiateWords(this.$refs.alphabetion.getLettersAll(), this.wordLength)
+    this.alphabet = Array.from(this.alphabetRaw)
   },
   methods: {
     checkGuess() {
-      this.pleaseGuess = ('' === this.guess);
-      if (this.pleaseGuess) return;
+      this.pleaseGuess = ('' === this.guess)
+      if (this.pleaseGuess) return
       if (this.guessJustChecked === this.guess) { this.pleaseGuessNew = true; }
       if (this.wordJustChecked === this.word && this.guessJustChecked === this.guess) { return; }
-      this.right = this.compareIgnoreCase(this.word, this.guess);
-      this.wordJustChecked = this.word;
-      this.guessJustChecked = this.guess;
+      this.right = this.compareIgnoreCase(this.word, this.guess)
+      this.wordJustChecked = this.word
+      this.guessJustChecked = this.guess
       if (this.right) {
-        this.addRight();
-        this.addToPersonalWordList(this.word);
-        this.tryAgain();
+        this.addRight()
+        this.addToPersonalWordList(this.word)
+        this.tryAgain()
       } else {
-        this.addWrong();
+        this.addWrong()
       }
-      this.result = true;
-      this.pleaseGuessNew = false;
+      this.result = true
+      this.pleaseGuessNew = false
     },
     async initiateWords(letters, wordLength = 10) {
-      console.log('==================')
-      console.log('letters: ' + letters)
-      console.log('wordLength: ' + wordLength)
       this.errored = false
       this.isLoading = true
-      let endpoint = '/words';
+      let endpoint = '/words'
       if (0 < letters.length && 0 < wordLength) endpoint += '/' + letters + '/' + wordLength
       else if (0 < wordLength) endpoint += '/' + wordLength
       else if (0 < letters.length) endpoint += '/' + letters
-      this.isLoading = false
       await this.axios
           .get(endpoint)
           .then(response => {
             this.wordlist = response.data.words
+            this.debug.wordlist = this.wordlist
             this.isLoading = false
           })
           .catch(error => {
             console.log(error)
             this.errored = true
+            this.debug.error = 'true'
           })
           .finally(() => this.isLoading = false)
     },
@@ -140,40 +140,40 @@ export default {
       this.personalWordList.unshift(word);
     },
     resetPersonalWordList() {
-      this.personalWordList = [];
+      this.personalWordList = []
     },
     setLetters() {
-      this.initiateWords(this.$refs.alphabetion.lettersActive.join(''), this.wordLength)
+      this.initiateWords(this.$refs.alphabetion.getLetters().join(''), this.wordLength)
     },
     tryAgain() {
-      this.switchWord();
-      this.$refs.guess.focus();
-      this.displaySigns();
-      this.guess = '';
-      this.result = false;
+      this.switchWord()
+      this.$refs.guess.focus()
+      this.displaySigns()
+      this.guess = ''
+      this.result = false
     },
     restart() {
-      this.resetPersonalWordList();
-      this.$refs.statistics.resetChart();
-      this.tryAgain();
+      this.resetPersonalWordList()
+      this.$refs.statistics.resetChart()
+      this.tryAgain()
     },
     displaySigns() {
-      this.letters = this.word.toLowerCase().split('');
+      this.letters = this.word.toLowerCase().split('')
     },
     switchWord() {
-      this.word = this.wordlist[this.getRandomInt(this.wordlist.length)];
+      this.word = this.wordlist[this.getRandomInt(this.wordlist.length)]
     },
     getRandomInt(max) {
-      return Math.floor(Math.random() * max);
+      return Math.floor(Math.random() * max)
     },
     addRight() {
-      this.$refs.statistics.addRight();
+      this.$refs.statistics.addRight()
     },
     addWrong() {
-      this.$refs.statistics.addWrong();
+      this.$refs.statistics.addWrong()
     },
     setWordLength(wordLength) {
-      this.wordLength = wordLength;
+      this.wordLength = wordLength
       this.initiateWords(this.letters, this.wordLength)
     }
   }

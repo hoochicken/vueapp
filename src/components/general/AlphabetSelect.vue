@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import LetterSimple from "./LetterSimple";
+import LetterSimple from "./LetterSimple"
 export default {
   name: "AlphabetSelect",
   components: {LetterSimple},
@@ -22,7 +22,7 @@ export default {
     isLoading: false
   }),
   mounted: function() {
-    this.initiateLetter();
+    this.initiateLetter()
   },
   methods: {
     async initiateLetter() {
@@ -31,8 +31,7 @@ export default {
           .get('/letters')
           .then(response => {
             this.lettersAll = response.data.letters
-            this.addAllLetters();
-            this.setLetters();
+            this.addAllLetters()
             this.isLoading = false
           })
           .catch(error => {
@@ -46,7 +45,7 @@ export default {
     },
     removeLetter(letter) {
       this.lettersActive = this.lettersActive.filter(function(e) {
-        return letter !== e;
+        return letter !== e
       })
     },
     toggleLetter(letter) {
@@ -55,10 +54,15 @@ export default {
     },
     addAllLetters() {
       this.lettersActive = this.lettersAll
-      this.setLetters()
     },
     removeAllLetters() {
       this.lettersActive = []
+    },
+    getLetters() {
+      return this.lettersActive
+    },
+    getLettersAll() {
+      return this.lettersAll
     }
   }
 }
