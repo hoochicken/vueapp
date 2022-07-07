@@ -47,11 +47,11 @@
   <div class="d-md-flex">
     <div class="statistics p-2 flex-fill">
       <h2>Deine aktuelle Statistik</h2>
-      <statistics ref="statistics"></statistics>
+      <guess-statistics ref="statistics"></guess-statistics>
     </div>
     <div v-if="0 < personalWordList.length" class="p-2 flex-fill">
       <h2>Deine richtig geratenen Wörter</h2>
-      <wordlist ref="wordlist" :words="personalWordList"></wordlist>
+      <word-list ref="wordlist" :words="personalWordList"></word-list>
     </div>
   </div>
 </template>
@@ -59,8 +59,8 @@
 <script>
 
 import { MDBBtn } from "mdb-vue-ui-kit"
-import Statistics from "../components/layout/Statistics"
-import Wordlist from "../components/layout/Wordlist"
+import GuessStatistics from "../components/layout/GuessStatistics"
+import WordList from "../components/layout/WordList"
 import QlWord from "../components/general/QlWord"
 import AlphabetSelect from "../components/general/AlphabetSelect"
 import WordLength from "../components/general/WordLength"
@@ -68,7 +68,7 @@ import WordLength from "../components/general/WordLength"
 
 export default {
   name: 'WordGuess',
-  components: {WordLength, AlphabetSelect, Wordlist, Statistics, MDBBtn, QlWord },
+  components: {WordLength, AlphabetSelect, WordList, GuessStatistics, MDBBtn, QlWord },
   data: () => ({
     word: '',
     guess: '',
@@ -201,6 +201,6 @@ export default {
 <style>
 .statistics {max-width: 50%;}
 @media(max-width:800px) {
-  .statistics {max-width: 100%;}
+  .statistics {max-width: 100%;width: 100%;}
 }
 </style>

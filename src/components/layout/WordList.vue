@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: "Wordlist",
+  name: "WordList",
   data: () => {
     return {
       oldValue:'',

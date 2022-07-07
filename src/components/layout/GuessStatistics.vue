@@ -16,7 +16,7 @@
 import Vue3ChartJs from '@j-t-mcc/vue3-chartjs'
 
 export default {
-  name: 'Statistics',
+  name: 'GuessStatistics',
   components: {
     Vue3ChartJs,
   },
