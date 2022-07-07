@@ -77,3 +77,8 @@ export default {
   }
 }
 </script>
+<style scoped>
+@media(max-width:800px) {
+  canvas {width:100%!important;}
+}
+</style>
