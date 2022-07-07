@@ -92,8 +92,9 @@ export default {
   mounted: async function() {
     this.switchWord()
     this.displaySigns()
-    await this.initiateWords(await this.$refs.alphabetion.getLettersAll(), this.wordLength)
     this.alphabet = Array.from(this.alphabetRaw)
+    this.initiateWords(this.alphabet, this.wordLength)
+    // await this.initiateWords(await this.$refs.alphabetion.getLettersAll(), this.wordLength)
   },
   methods: {
     checkGuess() {
