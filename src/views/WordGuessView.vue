@@ -115,6 +115,12 @@ export default {
       this.result = true
       this.pleaseGuessNew = false
     },
+    /**
+     *
+     * @array letters
+     * @int wordLength
+     * @returns {Promise<void>}
+     */
     async initiateWords(letters, wordLength = 10) {
       this.errored = false
       this.isLoading = true
@@ -136,11 +142,16 @@ export default {
           })
           .finally(() => this.isLoading = false)
     },
+    /**
+     *
+     * @string a
+     * @string b
+     * @returns {boolean}
+     */
     compareIgnoreCase(a, b) {
       return a.toLowerCase() === b.toLowerCase();
     },
     addToPersonalWordList(word) {
-      // this.$refs.wordlist.addWord(word);
       this.personalWordList.unshift(word);
     },
     resetPersonalWordList() {
