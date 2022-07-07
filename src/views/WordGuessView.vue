@@ -30,9 +30,9 @@
       </div>
     </div>
   </div>
-  <div class="">
-    <h2>Parameter</h2>
-    <MDBBtn class="btn btn-secondary" @click="setLetters">Wörter holen</MDBBtn>
+  <div class="mt-3">
+    <h2>Schwierigkeitsstufe</h2>
+    <MDBBtn class="btn btn-secondary" @click="setLetters">Neue Wörter holen</MDBBtn>
   </div>
   <div class="d-md-flex">
     <div class="p-2 flex-fill">
@@ -148,6 +148,10 @@ export default {
     setLetters() {
       this.initiateWords(this.$refs.alphabetion.getLetters().join(''), this.wordLength)
     },
+    setWordLength(wordLength) {
+      this.wordLength = wordLength
+      this.initiateWords(this.$refs.alphabetion.getLetters().join(''), this.wordLength)
+    },
     tryAgain() {
       this.switchWord()
       this.$refs.guess.focus()
@@ -174,10 +178,6 @@ export default {
     },
     addWrong() {
       this.$refs.statistics.addWrong()
-    },
-    setWordLength(wordLength) {
-      this.wordLength = wordLength
-      this.initiateWords(this.letters, this.wordLength)
     }
   }
 }
