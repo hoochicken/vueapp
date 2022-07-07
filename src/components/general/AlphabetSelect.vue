@@ -44,22 +44,17 @@ export default {
           })
     },
     addLetter(letter) {
-      console.log('addLetter')
       if (this.lettersActive.includes(letter)) return
       this.lettersActive.push(letter)
-      console.log('letterChanged')
       this.$emit('letterChanged', this.lettersActive)
     },
     removeLetter(letter) {
-      console.log('removeLetter')
       this.lettersActive = this.lettersActive.filter(function (e) {
         return letter !== e
       })
-      console.log('letterChanged')
       this.$emit('letterChanged', this.lettersActive)
     },
     toggleLetter(letter) {
-      console.log('toggelLetter')
       if (this.lettersActive.includes(letter)) this.removeLetter(letter)
       else this.addLetter(letter)
     },

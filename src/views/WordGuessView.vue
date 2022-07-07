@@ -92,7 +92,7 @@ export default {
   mounted: async function() {
     this.switchWord()
     this.displaySigns()
-    await this.initiateWords(this.$refs.alphabetion.getLettersAll(), this.wordLength)
+    await this.initiateWords(await this.$refs.alphabetion.getLettersAll(), this.wordLength)
     this.alphabet = Array.from(this.alphabetRaw)
   },
   methods: {
