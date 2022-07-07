@@ -32,11 +32,11 @@
   </div>
   <div class="mt-3">
     <h2>Schwierigkeitsstufe</h2>
-    <MDBBtn class="btn btn-secondary" @click="setLetters">Neue Wörter holen</MDBBtn>
+    <MDBBtn class="btn btn-secondary" @click="getNewWords">Neue Wörter holen</MDBBtn>
   </div>
   <div class="d-md-flex">
     <div class="p-2 flex-fill">
-      <alphabet-select ref="alphabetion" @setLetters="setLetters"></alphabet-select>
+      <alphabet-select ref="alphabetion" @letterChanged="setLetters"></alphabet-select>
     </div>
   <!--/div>
   <div class="d-md-flex"-->
@@ -84,7 +84,7 @@ export default {
     letters: {},
     wordlist: ['Hallo'],
     wordLength: 10,
-    showDebug: true,
+    showDebug: false,
     debug: {},
     errored: false,
     isLoading: true
@@ -145,12 +145,15 @@ export default {
     resetPersonalWordList() {
       this.personalWordList = []
     },
-    setLetters() {
-      this.initiateWords(this.$refs.alphabetion.getLetters().join(''), this.wordLength)
+    setLetters(letters) {
+      this.letters = letters
+    },
+    getNewWords() {
+      this.initiateWords(this.letters, this.wordLength)
     },
     setWordLength(wordLength) {
       this.wordLength = wordLength
-      this.initiateWords(this.$refs.alphabetion.getLetters().join(''), this.wordLength)
+      this.getNewWords()
     },
     tryAgain() {
       this.switchWord()

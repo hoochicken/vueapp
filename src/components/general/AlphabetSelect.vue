@@ -3,7 +3,8 @@
     <h3>Alphabet</h3>
     <!--div class="alert alert-black">{{ lettersAll }}</div-->
     <div class="">
-      <letter-simple v-for="letter in lettersAll" v-on:click="toggleLetter(letter)" :letter="letter" :active="lettersActive.includes(letter)"></letter-simple>
+      <letter-simple v-for="letter in lettersAll" v-on:click="toggleLetter(letter)" :letter="letter"
+                     :active="lettersActive.includes(letter)"></letter-simple>
     </div>
     <div class="btn btn-white" v-on:click="addAllLetters()">Alle anwählen</div>
     <div class="btn btn-white" v-on:click="removeAllLetters()">Alle deaktivieren</div>
@@ -12,16 +13,17 @@
 
 <script>
 import LetterSimple from "./LetterSimple"
+
 export default {
   name: "AlphabetSelect",
   components: {LetterSimple},
   props: ['letters'],
-  data: () => ( {
+  data: () => ({
     lettersAll: [],
     lettersActive: [],
     isLoading: false
   }),
-  mounted: function() {
+  mounted: function () {
     this.initiateLetter()
   },
   methods: {
@@ -37,18 +39,27 @@ export default {
           .catch(error => {
             console.log(error)
           })
-          .finally(() => {this.isLoading = false})
+          .finally(() => {
+            this.isLoading = false
+          })
     },
     addLetter(letter) {
+      console.log('addLetter')
       if (this.lettersActive.includes(letter)) return
       this.lettersActive.push(letter)
+      console.log('letterChanged')
+      this.$emit('letterChanged', this.lettersActive)
     },
     removeLetter(letter) {
-      this.lettersActive = this.lettersActive.filter(function(e) {
+      console.log('removeLetter')
+      this.lettersActive = this.lettersActive.filter(function (e) {
         return letter !== e
       })
+      console.log('letterChanged')
+      this.$emit('letterChanged', this.lettersActive)
     },
     toggleLetter(letter) {
+      console.log('toggelLetter')
       if (this.lettersActive.includes(letter)) this.removeLetter(letter)
       else this.addLetter(letter)
     },
