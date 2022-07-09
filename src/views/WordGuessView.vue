@@ -36,7 +36,11 @@
   </div>
   <div class="d-md-flex">
     <div class="p-2 flex-fill">
-      <alphabet-select ref="alphabetion" @letterChanged="setLetters"></alphabet-select>
+      arraysCompared : {{ arraysCompared }}<br />
+      letters : {{ letters }}<br />
+      lettersActuallyUsed : {{ lettersActuallyUsed }}
+      <alphabet-select ref="alphabetion" :letters="lettersActuallyUsed" @letterChanged="setLetters"></alphabet-select>
+      <div class="alert alert-info mt-3" v-if="letters !== lettersActuallyUsed">Du hast gerade neue Buchstaben angewählt. <br />Bitte klicke auf <strong>Neue Wörter holen</strong>, damit die Änderungen wirksam werden.</div>
     </div>
   <!--/div>
   <div class="d-md-flex"-->
@@ -82,6 +86,7 @@ export default {
     result: false,
     right: true,
     letters: {},
+    lettersActuallyUsed: {},
     wordlist: ['Hallo'],
     wordLength: 10,
     showDebug: false,
@@ -95,6 +100,11 @@ export default {
     this.alphabet = Array.from(this.alphabetRaw)
     this.initiateWords(this.alphabet, this.wordLength)
     // await this.initiateWords(await this.$refs.alphabetion.getLettersAll(), this.wordLength)
+  },
+  computed: {
+    arraysCompared() {
+      return this.compareArray(this.letters, this.lettersActuallyUsed)
+    }
   },
   methods: {
     checkGuess() {
@@ -133,6 +143,7 @@ export default {
           .then(response => {
             this.wordlist = response.data.words
             this.debug.wordlist = this.wordlist
+            this.lettersActuallyUsed = letters
             this.isLoading = false
           })
           .catch(error => {
@@ -193,6 +204,14 @@ export default {
     },
     addWrong() {
       this.$refs.statistics.addWrong()
+    },
+    compareArray(arr1, arr2) {
+      console.log(arr1)
+      console.log(arr2)
+      for (let i = 0; i < arr1.length; i++) {
+        if (!arr2.includes(arr1[i])) return false
+      }
+      return true
     }
   }
 }
