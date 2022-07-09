@@ -3,6 +3,7 @@
     <h1>Fingeralphabet</h1>
     <div class="">
       <ql-word :word="word" />
+      {{ lettersUsedInGuessWord }}
     </div>
     <input type="text" ref="guess" class="form-control" id="guess" name="guess" @keydown.enter="checkGuess()" v-model="guess" />
     <div class="d-flex">
@@ -96,7 +97,6 @@ export default {
   }),
   mounted: async function() {
     this.switchWord()
-    this.displaySigns()
     this.alphabet = Array.from(this.alphabetRaw)
     this.initiateWords(this.alphabet, this.wordLength)
     // await this.initiateWords(await this.$refs.alphabetion.getLettersAll(), this.wordLength)
@@ -181,7 +181,6 @@ export default {
     tryAgain() {
       this.switchWord()
       this.$refs.guess.focus()
-      this.displaySigns()
       this.guess = ''
       this.result = false
     },
@@ -189,9 +188,6 @@ export default {
       this.resetPersonalWordList()
       this.$refs.statistics.resetChart()
       this.tryAgain()
-    },
-    displaySigns() {
-      this.letters = this.word.toLowerCase().split('')
     },
     switchWord() {
       this.word = this.wordlist[this.getRandomInt(this.wordlist.length)]
