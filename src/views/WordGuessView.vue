@@ -37,7 +37,7 @@
   <div class="d-md-flex">
     <div class="p-2 flex-fill">
       <alphabet-select ref="alphabetion" @letterChanged="setLetters"></alphabet-select>
-      <div class="alert alert-info mt-3" v-if="!letterSelectionEqual">Du hast gerade neue Buchstaben angewählt. <br />Bitte klicke auf <strong>Neue Wörter holen</strong>, damit die Änderungen wirksam werden.</div>
+      <div class="alert alert-info mt-3" v-if="!isLoading && !letterSelectionEqual">Du hast gerade neue Buchstaben angewählt. <br />Bitte klicke auf <strong>Neue Wörter holen</strong>, damit die Änderungen wirksam werden.</div>
     </div>
   <!--/div>
   <div class="d-md-flex"-->
