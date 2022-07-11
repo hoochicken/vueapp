@@ -60,9 +60,11 @@ export default {
     },
     addAllLetters() {
       this.lettersActive = this.lettersAll
+      this.$emit('letterChanged', this.lettersActive)
     },
     removeAllLetters() {
       this.lettersActive = []
+      this.$emit('letterChanged', this.lettersActive)
     },
     getLetters() {
       return this.lettersActive
