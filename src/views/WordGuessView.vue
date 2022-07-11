@@ -79,6 +79,7 @@ export default {
     pleaseGuessNew: false,
     personalWordList: [],
     alphabetRaw: 'abcdefghijklmnopqrstuvwxyzäöü',
+    alphabetLigatures: ['sch'],
     alphabet: [],
     result: false,
     right: true,
@@ -93,7 +94,7 @@ export default {
   }),
   mounted: async function() {
     this.switchWord()
-    this.alphabet = Array.from(this.alphabetRaw)
+    this.alphabet = [...Array.from(this.alphabetRaw), ...this.alphabetLigatures]
     this.initiateWords(this.alphabet, this.wordLength)
     // await this.initiateWords(await this.$refs.alphabetion.getLettersAll(), this.wordLength)
   },
@@ -131,9 +132,9 @@ export default {
       this.errored = false
       this.isLoading = true
       let endpoint = '/words'
-      if (0 < letters.length && 0 < wordLength) endpoint += '/' + letters + '/' + wordLength
+      if (0 < letters.length && 0 < wordLength) endpoint += '/' + letters.join('') + '/' + wordLength
       // else if (0 < wordLength) endpoint += '/' + wordLength
-      else if (0 < letters.length) endpoint += '/' + letters
+      else if (0 < letters.length) endpoint += '/' + letters.join('')
       await this.axios
           .get(endpoint)
           .then(response => {
