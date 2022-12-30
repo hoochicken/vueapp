@@ -1,6 +1,7 @@
 <script setup>
 // import { RouterLink, RouterView } from 'vue-router'
 // import HelloWorld from '@/components/HelloWorld.vue'
+// import MainMenu from "./components/layout/MainMenu";
 </script>
 
 <template>
@@ -8,7 +9,7 @@
     <header>
       <img src="/logo.png">
       <div class="position-absolute top-0 end-0">
-        <MainMenu></MainMenu>
+        <main-menu></main-menu>
       </div>
     </header>
     <div class="d-grid">
@@ -20,7 +21,9 @@
   </div>
 </template>
 <script>
-import MainMenu from "@/components/layout/MainMenu.vue";
+// import MainMenu from "@/components/layout/MainMenu.vue";
+import MainMenu from "./components/layout/MainMenu";
+
 export default {
   name: 'App',
   components:[MainMenu],

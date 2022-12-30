@@ -10,7 +10,8 @@ export default defineConfig({
   // base: '/',
   base: '/vueapp/',
   server: {
-    port: 8090
+    host: true,
+    port: 8000
   },
   plugins: [
       vue(),
