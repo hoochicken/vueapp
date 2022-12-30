@@ -3,7 +3,6 @@
     <h1>Fingeralphabet</h1>
     <div class="">
       <ql-word :word="word" />
-      {{ lettersUsedInGuessWord }}
     </div>
     <input type="text" ref="guess" class="form-control" id="guess" name="guess" @keydown.enter="checkGuess()" v-model="guess" />
     <div class="d-flex">
@@ -37,11 +36,8 @@
   </div>
   <div class="d-md-flex">
     <div class="p-2 flex-fill">
-      arraysCompared : {{ arraysCompared }}<br />
-      letters : {{ letters }}<br />
-      lettersActuallyUsed : {{ lettersActuallyUsed }}
-      <alphabet-select ref="alphabetion" :letters="lettersActuallyUsed" @letterChanged="setLetters"></alphabet-select>
-      <div class="alert alert-info mt-3" v-if="letters !== lettersActuallyUsed">Du hast gerade neue Buchstaben angewählt. <br />Bitte klicke auf <strong>Neue Wörter holen</strong>, damit die Änderungen wirksam werden.</div>
+      <alphabet-select ref="alphabetion" @letterChanged="setLetters"></alphabet-select>
+      <div class="alert alert-info mt-3" v-if="!isLoading && !letterSelectionEqual">Du hast gerade neue Buchstaben angewählt. <br />Bitte klicke auf <strong>Neue Wörter holen</strong>, damit die Änderungen wirksam werden.</div>
     </div>
   <!--/div>
   <div class="d-md-flex"-->
@@ -83,11 +79,12 @@ export default {
     pleaseGuessNew: false,
     personalWordList: [],
     alphabetRaw: 'abcdefghijklmnopqrstuvwxyzäöü',
+    alphabetLigatures: ['sch'],
     alphabet: [],
     result: false,
     right: true,
     letters: {},
-    lettersActuallyUsed: {},
+    lettersActuallyUsed: [],
     wordlist: ['Hallo'],
     wordLength: 10,
     showDebug: false,
@@ -97,13 +94,13 @@ export default {
   }),
   mounted: async function() {
     this.switchWord()
-    this.alphabet = Array.from(this.alphabetRaw)
+    this.alphabet = [...Array.from(this.alphabetRaw), ...this.alphabetLigatures]
     this.initiateWords(this.alphabet, this.wordLength)
     // await this.initiateWords(await this.$refs.alphabetion.getLettersAll(), this.wordLength)
   },
   computed: {
-    arraysCompared() {
-      return this.compareArray(this.letters, this.lettersActuallyUsed)
+    letterSelectionEqual() {
+      return this.isArrayEqual(this.letters, this.lettersActuallyUsed)
     }
   },
   methods: {
@@ -135,15 +132,16 @@ export default {
       this.errored = false
       this.isLoading = true
       let endpoint = '/words'
-      if (0 < letters.length && 0 < wordLength) endpoint += '/' + letters + '/' + wordLength
+      if (0 < letters.length && 0 < wordLength) endpoint += '/' + letters.join('-') + '/' + wordLength
       // else if (0 < wordLength) endpoint += '/' + wordLength
-      else if (0 < letters.length) endpoint += '/' + letters
+      else if (0 < letters.length) endpoint += '/' + letters.join('-')
+      console.log(endpoint)
       await this.axios
           .get(endpoint)
           .then(response => {
             this.wordlist = response.data.words
             this.debug.wordlist = this.wordlist
-            this.lettersActuallyUsed = letters
+            this.lettersActuallyUsed = [...letters]
             this.isLoading = false
           })
           .catch(error => {
@@ -201,11 +199,12 @@ export default {
     addWrong() {
       this.$refs.statistics.addWrong()
     },
-    compareArray(arr1, arr2) {
-      console.log(arr1)
-      console.log(arr2)
-      for (let i = 0; i < arr1.length; i++) {
-        if (!arr2.includes(arr1[i])) return false
+    isArrayEqual(arr1, arr2) {
+      if (arr2.length !== arr1.length) return false
+      let arrAll = [...arr1, ...arr2]
+      for (let i = 0; i < arrAll.length; i++) {
+        if (!arr1.includes(arrAll[i])) return false
+        if (!arr2.includes(arrAll[i])) return false
       }
       return true
     }

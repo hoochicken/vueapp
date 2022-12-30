@@ -3,7 +3,7 @@
     <h3>Alphabet</h3>
     <!--div class="alert alert-black">{{ lettersAll }}</div-->
     <div class="">
-      <letter-simple v-for="letter in lettersAll" v-on:click="toggleLetter(letter)" :letter="letter"
+      <letter-simple v-bind:key="letter" v-for="letter in lettersAll" v-on:click="toggleLetter(letter)" :letter="letter"
                      :active="lettersActive.includes(letter)"></letter-simple>
     </div>
     <div class="btn btn-white" v-on:click="addAllLetters()">Alle anwählen</div>
@@ -60,9 +60,11 @@ export default {
     },
     addAllLetters() {
       this.lettersActive = this.lettersAll
+      this.$emit('letterChanged', this.lettersActive)
     },
     removeAllLetters() {
       this.lettersActive = []
+      this.$emit('letterChanged', this.lettersActive)
     },
     getLetters() {
       return this.lettersActive
