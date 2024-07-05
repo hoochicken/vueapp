@@ -21,11 +21,13 @@
       Ich lade gerade deine Ratewörter, bitte warten ... <!--loading-spinner></loading-spinner-->
     </div>
 
-    <div v-if="showDebug" class="debug-container mt-4">
+    <div class="debug-container mt-4">
       <div v-if="!showDebug" @click="showDebug = true" class="btn btn-secondary">Show debug</div>
       <div v-if="showDebug" @click="showDebug = false" class="btn btn-secondary">Hide debug</div>
       <div v-if="showDebug" class="p-2 mt-4 bg-light">word: {{ word }} // guess: {{ guess }} // letters: {{ letters }}
         <br /> {{ debug }}
+        <br /> {{ debug.msg }}
+        <br /> endpoint-words: {{ endpoint }}
         <br /> <div style="display:block; height:50px;overflow:hidden;" v-if="showDebug">wordlist: {{ wordlist }}</div>
       </div>
     </div>
@@ -75,6 +77,7 @@ export default {
     guess: '',
     wordJustChecked: '',
     guessJustChecked: '',
+    endpoint: '',
     pleaseGuess: false,
     pleaseGuessNew: false,
     personalWordList: [],
@@ -87,7 +90,7 @@ export default {
     lettersActuallyUsed: [],
     wordlist: ['Hallo'],
     wordLength: 10,
-    showDebug: false,
+    showDebug: true,
     debug: {},
     errored: false,
     isLoading: true
@@ -121,6 +124,7 @@ export default {
       }
       this.result = true
       this.pleaseGuessNew = false
+      this.endpoint = ''
     },
     /**
      *
@@ -135,7 +139,8 @@ export default {
       if (0 < letters.length && 0 < wordLength) endpoint += '/' + letters.join('-') + '/' + wordLength
       // else if (0 < wordLength) endpoint += '/' + wordLength
       else if (0 < letters.length) endpoint += '/' + letters.join('-')
-      console.log(endpoint)
+      // console.log(endpoint)
+      this.endpoint = endpoint
       await this.axios
           .get(endpoint)
           .then(response => {
@@ -148,6 +153,7 @@ export default {
             console.log(error)
             this.errored = true
             this.debug.error = 'true'
+            this.debug.msg = error
           })
           .finally(() => this.isLoading = false)
     },
