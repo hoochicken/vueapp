@@ -1,13 +1,13 @@
 <template>
   <div>
-    <h2>Alphabet</h2>
+    <!--h2>Alphabet</h2-->
     <!--div class="alert alert-black">{{ lettersAll }}</div-->
-    <div class="btn btn-secondary" v-on:click="setLetters()">SET LETTERS</div>
+    <!--div class="btn btn-secondary" v-on:click="setLetters()">SET LETTERS</div>
     <div class="btn btn-secondary" v-on:click="addAllLetters()">Alle anwählen</div>
     <div class="btn btn-secondary" v-on:click="removeAllLetters()">Alle deaktivieren</div>
     <div class="">
       <letter-simple v-for="letter in lettersAll" v-on:click="toggleLetter(letter)" :letter="letter" :active="lettersActive.includes(letter)"></letter-simple>
-    </div>
+    </div-->
     <!--loading-spinner if="isLoading"></loading-spinner-->
   </div>
 </template>
@@ -24,7 +24,7 @@ export default {
     isLoading: false
   }),
   mounted: function() {
-    this.initiateLetter();
+    // this.initiateLetter();
   },
   methods: {
     async initiateLetter() {
