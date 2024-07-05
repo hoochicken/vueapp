@@ -10,6 +10,9 @@ const Vue = createApp({})
 // axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || ''
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
+// axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*'
+axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*'
+axios.defaults.baseURL = 'http://symapi.localhost'
 
 const config = {
   BASE_URL: import.meta.baseURL || ''

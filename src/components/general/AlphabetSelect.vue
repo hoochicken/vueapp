@@ -6,6 +6,8 @@
       <letter-simple v-bind:key="letter" v-for="letter in lettersAll" v-on:click="toggleLetter(letter)" :letter="letter"
                      :active="lettersActive.includes(letter)"></letter-simple>
     </div>
+    <br /> letters: {{ lettersAll }}
+    <br /> endpoint letters: {{ endpoint }}
     <div class="btn btn-white" v-on:click="addAllLetters()">Alle anwählen</div>
     <div class="btn btn-white" v-on:click="removeAllLetters()">Alle deaktivieren</div>
   </div>
@@ -21,6 +23,7 @@ export default {
   data: () => ({
     lettersAll: [],
     lettersActive: [],
+    endpoint: '',
     isLoading: false
   }),
   mounted: function () {
@@ -29,8 +32,9 @@ export default {
   methods: {
     async initiateLetter() {
       this.isLoading = true
+      this.endpoint = '/letters'
       this.axios
-          .get('/letters')
+          .get(this.endpoint)
           .then(response => {
             this.lettersAll = response.data.letters
             this.addAllLetters()
