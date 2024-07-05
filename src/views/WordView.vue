@@ -29,11 +29,11 @@
       </div>
     </div>
   </div>
-  <div class="d-md-flex">
+  <!--div class="d-md-flex">
     <div class="p-2 flex-fill">
       <alphabet ref="alphabetion" @setLetters="setLetters"></alphabet>
     </div>
-  </div>
+  </div-->
   <div class="d-md-flex">
     <div class="statistics p-2 flex-fill">
       <h2>Deine aktuelle Statistik</h2>
